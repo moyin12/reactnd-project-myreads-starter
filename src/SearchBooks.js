@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBookResult from './SearchBookResult';
-import SearchBookInput from '/SearchBookInput';
+import SearchBookInput from './SearchBookInput';
 
 class SearchBook extends Component{
     render(){
