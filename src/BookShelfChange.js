@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class BookShelfChange extends Component{
     state ={
         // from the api call in app.js
-        value: '',
+        value: this.props.shelf,
     };
 
     handleChange = event => {
