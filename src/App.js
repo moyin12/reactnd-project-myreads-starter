@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import { debounce } from 'throttle-debounce';
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListBooks from './ListBooks'
@@ -45,19 +46,20 @@ class BooksApp extends React.Component {
   }
 
   // Function to search for book
-  searchForBook = (query) => {
-    if (query.length > 0){
+  searchForBook = debounce(300, false, query => {
+    if (query.length > 0) {
       BooksAPI.search(query).then(books => {
         if (books.error) {
           this.setState({ searchBooks: [] });
         } else {
           this.setState({ searchBooks: books });
         }
-      })
+      });
     } else {
-      this.setState({ searchBooks: [] })
+      this.setState({ searchBooks: [] });
     }
-  }
+  });
+
   // Function to reset the search after completing a search
   resetSearch = () => {
     this.setState({ searchBooks: [] });

@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 
 class SearchBookInput extends Component{
+    constructor(props){
+        super(props)
+    }
     state = {
         value: '',
     };
 
     handleChange = e => {
-        const val = e.target.value;
-        this.setState({ value: val } , () => {
-            this.props.onSearch(val);
+        const inputValue = e.target.value;
+        this.setState({ value: inputValue } , () => {
+            this.props.onSearch(inputValue);
         });
     }
     render() {
@@ -25,6 +28,5 @@ class SearchBookInput extends Component{
         );
     }
 }
-
 
 export default SearchBookInput;
